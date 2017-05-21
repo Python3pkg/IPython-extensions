@@ -207,7 +207,7 @@ latex_font_size = '11pt'
 
 latex_documents = [
     ('index', 'ipythonext.tex', 'IPython-extensions Documentation',
-     u"""The IPython-extensions Development Team""", 'manual', True),
+     """The IPython-extensions Development Team""", 'manual', True),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of

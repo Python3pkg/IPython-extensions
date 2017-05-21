@@ -23,7 +23,7 @@ except:
         long_description = f.read()
 
 # _version.py contains __version__.
-execfile(pjoin(repo_root, 'ipyext','_version.py'), globals())
+exec(compile(open(pjoin(repo_root, 'ipyext','_version.py')).read(), pjoin(repo_root, 'ipyext','_version.py'), 'exec'), globals())
         
         
 setup(

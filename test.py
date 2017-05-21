@@ -6,7 +6,7 @@ Small wrapper around IPythons testing runner
 It calls iptest with 'ipyext' as testgroup. You can pass
 arguments to nose by appending them after '--'
 """
-from __future__ import print_function
+
 
 from IPython.testing.iptestcontroller import main
 import sys

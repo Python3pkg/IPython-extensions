@@ -3,7 +3,7 @@
 Needs to be run by nose (to make ipython session available).
 """
 
-from __future__ import absolute_import
+
 
 import io
 import os
@@ -89,7 +89,7 @@ def test_writeandexecute_content():
             ip.run_cell("%%writeandexecute -i bla xxx_temp_foo\nprint('Hello world')")
 
         with io.open(TF_NAME, 'a', encoding='utf-8') as tf:
-            tf.write(u"\n# -- ==blub== --\n")
+            tf.write("\n# -- ==blub== --\n")
 
         # only one identifier
         with tt.AssertPrints("Exception: Found only one line with identifier", suppress=False):
@@ -100,14 +100,14 @@ def test_writeandexecute_content():
             ip.run_cell("print('a=%s' % a)")
 
         with io.open(TF_NAME, 'a', encoding='utf-8') as tf:
-            tf.write(u"\n# -- ==blub== --\n")
+            tf.write("\n# -- ==blub== --\n")
 
         # two should work
         with tt.AssertPrints("Hello world2", suppress=False):
             ip.run_cell("%%writeandexecute -d -i blub xxx_temp_foo\nprint('Hello world2')\na=2")
 
         with io.open(TF_NAME, 'a', encoding='utf-8') as tf:
-            tf.write(u"\n# -- ==blub== --\n")
+            tf.write("\n# -- ==blub== --\n")
 
         # three is bad again identifier
         with tt.AssertPrints("Exception: Found more than two lines with identifier", suppress=False):

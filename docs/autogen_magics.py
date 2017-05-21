@@ -11,9 +11,9 @@ magics = shell.magics_manager.magics
 # Register our own magics
 
 ipy_magics = []
-for name, func in magics['line'].items():
+for name, func in list(magics['line'].items()):
     ipy_magics.append(name)
-for name, func in magics['cell'].items():
+for name, func in list(magics['cell'].items()):
     ipy_magics.append(name)
 
 from ipyext import all_class_magics
@@ -44,7 +44,7 @@ output = [
 # Case insensitive sort by name
 def sortkey(s): return s[0].lower()
 
-for name, func in sorted(magics['line'].items(), key=sortkey):
+for name, func in sorted(list(magics['line'].items()), key=sortkey):
     if name in ipy_magics:
         continue
     if isinstance(func, Alias) or isinstance(func, MagicAlias):
@@ -62,7 +62,7 @@ output.extend([
 "",
 ])
 
-for name, func in sorted(magics['cell'].items(), key=sortkey):
+for name, func in sorted(list(magics['cell'].items()), key=sortkey):
     if name in ipy_magics:
         continue
     

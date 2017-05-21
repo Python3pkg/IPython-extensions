@@ -104,8 +104,8 @@ class WriteAndExecuteMagics(Magics):
             if not os.path.isfile(pypath):
                 # The file does not exist, so simple create a new one
                 if debug:
-                    print("Created new file: %s" % pypath)
-                new_content.extend([u'# -*- coding: utf-8 -*-\n\n', code_identifier , content, code_identifier])
+                    print(("Created new file: %s" % pypath))
+                new_content.extend(['# -*- coding: utf-8 -*-\n\n', code_identifier , content, code_identifier])
             else:
                 # If file exist, read in the content and either replace the code or append it
                 in_code_block = False
@@ -142,17 +142,17 @@ class WriteAndExecuteMagics(Magics):
                 if not included_new:
                     new_content.extend(["\n", code_identifier, content, code_identifier, "\n"])
 
-            new_content = py3compat.cast_unicode(u'\n'.join(new_content))
+            new_content = py3compat.cast_unicode('\n'.join(new_content))
 
             #Now write the complete code back to the file
             self.ensure_dir(pypath)
             with io.open(pypath,'w', encoding='utf-8') as f:
-                if not py3compat.PY3 and not isinstance(new_content, unicode):
+                if not py3compat.PY3 and not isinstance(new_content, str):
                     # this branch is likely only taken for JSON on Python 2
                     new_content = py3compat.str_to_unicode(new_content)
                 f.write(new_content)
                 if debug:
-                    print("Wrote cell to file: %s" % pypath)
+                    print(("Wrote cell to file: %s" % pypath))
 
 
 
